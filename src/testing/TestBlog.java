@@ -7,9 +7,7 @@ import static org.junit.Assert.*;
 import java.time.LocalDate;
 
 import org.junit.Test;
-
 import model.Blog;
-
 public class TestBlog {
 	LocalDate ld = LocalDate.of(2005, 4, 9);
 	Blog blog = new Blog("Java","ProgrammingLanguage",ld);
@@ -31,5 +29,5 @@ public class TestBlog {
 			 e.printStackTrace();
 		 }
 	 }
-}
-*/
+}*/
+

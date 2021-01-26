@@ -2,6 +2,7 @@ package controller;
 
 import java.io.IOException;
 import java.time.LocalDate;
+import java.util.Scanner;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Blog;
 import model.User;
+import utility.CheckBlogPost;
 
 
 @WebServlet(urlPatterns= {"/blog"})
@@ -29,10 +31,32 @@ public class BlogController extends HttpServlet {
 		rd.forward(request, response);
 		
 	}
-
+    public static void main(String[] args) {
+    	Scanner sc = new Scanner(System.in);
+    	System.out.println("blogDetails");
+		String title = sc.nextLine();
+		String description = sc.nextLine();
+		LocalDate postedOn = LocalDate.now();
+		
+		User user = null;
+		Blog blog=new Blog(title,description,postedOn);
+		System.out.println(title);
+		System.out.println(description);
+		
+		blog.setBlogTitle(title);
+		blog.setBlogDescription(description);
+		blog.setDate(postedOn);
+		CheckBlogPost blogpost = new CheckBlogPost();
+		boolean checkblog = blogpost.checkBlog(blog);
+		if(checkblog) {
+			System.out.println("no Offensive Words");
+		}else{
+			System.out.println("Offensive words");
+		}
+    }
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String blogDetails = request.getParameter("selectedAnswers")	;
+		/*String blogDetails = request.getParameter("selectedAnswers")	;
 		System.out.println(blogDetails);
 		String[] userBlog=blogDetails.split(",");
 		String title = userBlog[0];
@@ -47,8 +71,9 @@ public class BlogController extends HttpServlet {
 		blog.setBlogTitle(title);
 		blog.setBlogDescription(description);
 		blog.setDate(postedOn);
-
-		if(checkblog!) {
+		CheckBlogPost blogpost = new CheckBlogPost();
+		boolean checkblog = blogpost.checkBlog(blog);
+		if(!checkblog) {
 			request.setAttribute("blog", blog);
 			request.setAttribute("user",user);
 			RequestDispatcher rd=this.getServletContext().getRequestDispatcher("/WEB-INF/views/blogView.jsp");
@@ -62,7 +87,7 @@ public class BlogController extends HttpServlet {
 			rd.forward(request, response);
 			
 			
-		}
+		}*/
 		
 	}
 

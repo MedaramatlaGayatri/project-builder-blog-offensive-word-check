@@ -4,9 +4,7 @@ package testing;
 
 import static org.junit.Assert.*;
 import org.junit.Test;
-
 import businesslogic.ValidateUser;
-
 public class TestValidateUser {
 	ValidateUser vu = new ValidateUser();
 	
@@ -23,5 +21,5 @@ public class TestValidateUser {
 			e.printStackTrace();
 		}
 	}
-}
-*/
+}*/
+
